@@ -1,9 +1,78 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+  :root {
+    /* Japandi カラーパレット */
+    --bg-color: #F4F5F1; /* 温かみのある和紙のようなオフホワイト */
+    --text-main: #333631; /* 墨色（柔らかい黒） */
+    --accent-dark: #2C4F54; /* 深い青磁色（FitTrackerテーマカラー） */
+    --accent-light: #5C8A8F; /* 浅緑 */
+    --line-color: #D3D8D2; /* 境界線用の淡いグレー */
+  }
+
+  /* ページ全体のベース設定 */
+  body, .markdown-body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-main) !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
+    line-height: 1.8 !important;
+  }
+
+  /* 見出しのデザイン */
+  h1, h2, h3 {
+    color: var(--accent-dark) !important;
+    border-bottom: 1px solid var(--line-color) !important;
+    padding-bottom: 0.4em !important;
+    font-weight: 700 !important;
+  }
+
+  h1 {
+    text-align: center;
+    border-bottom: 2px solid var(--accent-dark) !important;
+    margin-bottom: 1.5em !important;
+  }
+
+  /* リンクカラー */
+  a {
+    color: var(--accent-light) !important;
+    text-decoration: none !important;
+    border-bottom: 1px dashed var(--accent-light);
+  }
+  a:hover {
+    color: var(--accent-dark) !important;
+    border-bottom: 1px solid var(--accent-dark);
+  }
+
+  /* 引用ブロック（サマリー部分など） */
+  blockquote {
+    border-left: 4px solid var(--accent-light) !important;
+    background-color: #E8EBE6 !important;
+    padding: 1em 1.5em !important;
+    border-radius: 0 8px 8px 0 !important;
+    color: var(--text-main) !important;
+  }
+
+  /* 画像の角丸とドロップシャドウ */
+  img {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(44, 79, 84, 0.08) !important;
+    margin: 2em 0 !important;
+  }
+
+  /* 区切り線 */
+  hr {
+    height: 1px !important;
+    background-color: var(--line-color) !important;
+    border: none !important;
+    margin: 3em 0 !important;
+  }
+</style>
 # 松岡 夏輝 (Natsuki Matsuoka)
 
 「ビジネス課題をシステムで解決する」を軸にエンタープライズシステムの保守・運用から、モダンなクラウドネイティブ開発までを一気通貫で推進するエンジニアを目指しています。
 
-## 💡 Professional Summary & Vision
-現在のIBMデジタルサービス株式会社では、チームリーダーとして航空業界向けエンタープライズシステム（Salesforce）の顧客折衝・要件定義・運用保守を牽引しています。
+## Summary & Vision
+現在のIBMデジタルサービス株式会社では、チームリーダーとして航空業界向けSalesforceのエンタープライズAMSで顧客折衝・要件定義・運用保守を牽引しています。
 エンジニアとして私は**「自身のスキルギャップを自覚し、自ら手を動かしてキャッチアップする行動力」**があります。
 
 - **課題認識からの圧倒的なキャッチアップ（クラウド領域への挑戦）:**
