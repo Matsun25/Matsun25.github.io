@@ -90,7 +90,7 @@
 
 ---
 
-## 🛠 Tech Stack & Expertise
+## Tech Stack & Expertise
 - **Cloud / Backend:** AWS (Lambda, API Gateway, DynamoDB, Cognito), Cloudflare, Podman, Docker
 - **Enterprise / CRM:** Salesforce (Apex, LWC, OmniStudio, Integration)
 - **Frontend / UI:** React, SPA, Japandi Design principles
