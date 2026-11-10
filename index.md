@@ -26,7 +26,19 @@
   - 毎日使うツールとしての体験価値を高めるため、フロントエンドは「和モダン（Japandi）」を取り入れたUI/UX設計を実践。
 - **Status:** 開発完了・運用中（または 〇〇フェーズ実装中）
 
-*(ここにMermaid等のアーキテクチャ図を挿入)*
+graph LR
+    User([User]) -->|Japandi UI| SPA[Cloudflare Pages\nReact SPA]
+    SPA -->|認証| Cognito[AWS Cognito]
+    SPA -->|HTTPS REST| API[AWS API Gateway]
+    API --> Lambda[AWS Lambda]
+    Lambda -->|Hot Store| DynamoDB[(Amazon DynamoDB)]
+    Lambda -->|Cold Store| PostgreSQL[(Local PostgreSQL)]
+    
+    style SPA fill:#E8EBE6,stroke:#5C8A8F,stroke-width:2px,color:#2C4F54
+    style Cognito fill:#F99000,stroke:#333,stroke-width:2px,color:#fff
+    style API fill:#FF4F8B,stroke:#333,stroke-width:2px,color:#fff
+    style Lambda fill:#FF9900,stroke:#333,stroke-width:2px,color:#fff
+    style DynamoDB fill:#4053D6,stroke:#333,stroke-width:2px,color:#fff
 
 
 ### 2. 物流倉庫の設備保守・部品在庫管理DXシステム
@@ -41,8 +53,38 @@
   - 将来的なクラウド移行（フルAWS化等）も視野に入れた、段階的なモダナイゼーションのベストプラクティスとして設計。
 - **Status:** 🚧 **開発進行中** (要件定義・基本設計完了。現在、ローカルPodman環境でのPostgreSQLおよびFastAPIモックを実装中)
 
-*(ここにMermaid等のアーキテクチャ図を挿入)*
+graph LR
+    subgraph Enterprise Front
+        SFDC[Salesforce\nLWC / OmniStudio]
+    end
 
+    subgraph AWS Cloud
+        API[AWS API Gateway]
+        Lambda[AWS Lambda]
+    end
+
+    subgraph Secure Tunnel
+        CF[Cloudflare Tunnels]
+    end
+
+    subgraph Local Environment
+        Podman{{Podman / WSL2}}
+        FastAPI[FastAPI]
+        DB[(PostgreSQL)]
+        Podman --- FastAPI
+        Podman --- DB
+        FastAPI --> DB
+    end
+
+    SFDC -->|Webhook / API| API
+    API --> Lambda
+    Lambda -->|HTTPS| CF
+    CF -->|Zero Trust| FastAPI
+
+    style SFDC fill:#00A1E0,stroke:#333,stroke-width:2px,color:#fff
+    style AWS Cloud fill:#FF9900,stroke:#333,stroke-width:2px,color:#fff
+    style Secure Tunnel fill:#F38020,stroke:#333,stroke-width:2px,color:#fff
+    style Local Environment fill:#892CA0,stroke:#333,stroke-width:2px,color:#fff
 
 ### 3. 東証ETF・AI投資ポートフォリオシステム
 **【データ処理 × バックエンドAPI連携】**
@@ -56,7 +98,25 @@
   - 単なるWeb開発にとどまらない、データ処理と自動化に特化したスクリプトおよびアーキテクチャの実現。
 - **Status:** 🚧 **開発進行中** (API連携テストおよび基礎データ収集フェーズ)
 
-*(ここにMermaid等のアーキテクチャ図を挿入)*
+graph TD
+    subgraph External Financial APIs
+        Kabu[三菱UFJ eスマート証券\nkabuステーションAPI]
+        JQuants[JPX J-Quants API V2]
+    end
+
+    subgraph Data Pipeline
+        Python[Python Backend Logic]
+        Batch[Automated Batch Process]
+        Portfolio[(Portfolio Database)]
+    end
+
+    Kabu -->|Market Data| Python
+    JQuants -->|Historical Data| Python
+    Python <--> Batch
+    Python --> Portfolio
+
+    style External Financial APIs fill:#E1E5EA,stroke:#333,stroke-width:2px,color:#333
+    style Data Pipeline fill:#3776AB,stroke:#333,stroke-width:2px,color:#fff
 
 ---
 
