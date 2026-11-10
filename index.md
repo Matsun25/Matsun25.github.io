@@ -103,7 +103,7 @@
 
 ### 1. 物流倉庫の設備保守・部品在庫管理DXシステム
 **【エンタープライズ × ハイブリッド連携（SI統合）】**
-既存の業務基幹システム（Salesforce）と、閉域網のローカル環境をセキュアに統合するエンタープライズ向けハイブリッドシステム。
+業務基幹システム（Salesforce）と、閉域網のローカル環境をセキュアに統合するエンタープライズ向けハイブリッドシステム。
 
 - **Status:** **開発進行中**（インフラ・バックエンド基盤構築完了、SFDC連携フェーズへ移行）
 - **Repository:** [Team-Matsuoka-Haishi/warehouse-infra-backend](https://github.com/Team-Matsuoka-Haishi/warehouse-infra-backend) 
@@ -111,9 +111,9 @@
 - **Architecture:** `パブリッククラウド × ローカルコンテナ ハイブリッド構成`
 - **Tech Stack:** Salesforce, AWS API Gateway, AWS Lambda, Cloudflare Tunnels, Podman (PostgreSQL / FastAPI)
 - **技術選定と設計のポイント:**
-  - 基幹業務のコアであるSalesforceをフロントとしつつ、ローカル(オンプレミス)で稼働するDBへの安全なアクセス経路としてCloudflare Tunnelsを採用。
+  - 基幹業務のコアであるSalesforceをフロントとしつつ、オンプレミスで稼働するDBへの安全なアクセス経路としてCloudflare Tunnelsを採用。
   - AWS API GatewayとLambdaを中継ハブとして配置することで、既存エンタープライズシステムとモダンなコンテナ環境（Podman/FastAPI）をシームレスかつセキュアに統合。
-  - 将来的なクラウド移行（フルAWS化等）も視野に入れた、段階的なモダナイゼーションのベストプラクティスとして設計。
+  - 将来的なクラウド移行も視野に入れた、段階的なモダナイゼーションとして設計。
 
 ![物流倉庫の設備保守・部品在庫管理DXシステム_アーキテクチャ図](./logistics-arch.png)
 
@@ -130,7 +130,7 @@
 - **技術選定と設計のポイント:**
   - 保守性とスケーラビリティを最大化するため、インフラ管理が不要な完全サーバーレスアーキテクチャを採用。
   - セキュリティを担保するためCognitoを用いたゼロトラストな認証基盤を構築。
-  - 毎日使うツールとしての体験価値を高めるため、フロントエンドは「和モダン（Japandi）」を取り入れたUI/UX設計を実践。
+  - 毎日使うツールとしての体験価値を高めるため、フロントエンドは「和モダン」を取り入れたUI/UX設計を実践。
 
 ![FitTrackerアーキテクチャ図](./fittracker-arch.png)
 
